@@ -13,3 +13,6 @@ See @[TODO.md](./TODO.md)
 
 ### LICENSE
 See @[LICENSE](./LICENSE)
+
+### Download
+See @[Download](https://www.pgyer.com/1jQk) for more information.
