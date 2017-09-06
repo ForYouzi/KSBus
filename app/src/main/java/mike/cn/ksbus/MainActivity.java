@@ -69,8 +69,6 @@ public class MainActivity extends AppCompatActivity {
             if (agentWeb.getWebCreator().get().canGoBack()) {
                 agentWeb.getWebCreator().get().goBack();
                 return true;
-            } else {
-                return false;
             }
         }
         return super.onKeyDown(keyCode, event);
