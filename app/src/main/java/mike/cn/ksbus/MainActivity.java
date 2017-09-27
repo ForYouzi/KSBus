@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
                            .useDefaultIndicator()
                            .defaultProgressBarColor()
                            .setWebViewClient(mWebViewClient)
-                           .addJavascriptInterface("local_obj", new InJavaScriptLocalObj())
                            .createAgentWeb()
                            .go("http://wap.ksbus.com.cn/mapHome");
     }
@@ -38,29 +37,23 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
             super.onPageStarted(view, url, favicon);
-            agentWeb.getJsEntraceAccess().callJs(getOutCss(Config.CSS_URL));
+            agentWeb.getJsEntraceAccess().callJs(loadCss(Config.CSS_URL));
         }
 
 
         @Override
         public void onPageFinished(WebView view, final String url) {
             super.onPageFinished(view, url);
-            agentWeb.getJsEntraceAccess().callJs(getOutCss(Config.CSS_URL));
+            agentWeb.getJsEntraceAccess().callJs(loadCss(Config.CSS_URL));
         }
     };
 
-    final class InJavaScriptLocalObj {
-        public void showSource(String html) {
-            System.out.println("====>html=" + html);
-        }
-    }
-
-    public static String getOutCss(String url) {
-        String js = ""; js = "javascript:var d=document;" +
-                             "var s=d.createElement('link');" +
-                             "s.setAttribute('rel', 'stylesheet');" +
-                             "s.setAttribute('href', '" + url + "');" +
-                             "d.head.appendChild(s);"; return js;
+    public static String loadCss(String url) {
+        return "javascript:var d=document;" +
+               "var s=d.createElement('link');" +
+               "s.setAttribute('rel', 'stylesheet');" +
+               "s.setAttribute('href', '" + url + "');" +
+               "d.head.appendChild(s);";
     }
 
     @Override
