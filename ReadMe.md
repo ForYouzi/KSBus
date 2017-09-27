@@ -1,7 +1,7 @@
 KSBus
 ---
 
-[![GitHub version](https://badge.fury.io/gh/YwithM%2FKSBus.svg)](https://badge.fury.io/gh/YwithM%2FKSBus)
+[![GitHub version](https://badge.fury.io/gh/ForYouzi%2FKSBus.svg)](https://badge.fury.io/gh/ForYouzi%2FKSBus)
 
 Yet, just another live bus application for Ms.Youzi.
 
