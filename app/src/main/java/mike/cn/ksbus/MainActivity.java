@@ -1,9 +1,12 @@
 package mike.cn.ksbus;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.RelativeLayout;
@@ -66,4 +69,23 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
-};
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // 填充menu的main.xml文件; 给action bar添加条目
+        menu.add(0, 0, 0, "MIKE SPEC");
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case 0:
+                Intent intent = new Intent(getApplicationContext(), MikeSpecActivity.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+}

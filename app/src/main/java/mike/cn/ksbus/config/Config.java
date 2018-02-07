@@ -16,4 +16,18 @@ public class Config {
                                      + "#weather_index{display:none!important}";
 
     public static final String CSS_URL = "http://47.92.122.133/KSBus/clean.css";
+
+    public static final String MIKE_SPEC_URLS[] = {
+            "http://wap.ksbus.com.cn/lineGps/26/upOrDown/1/station/-1/order/-1",
+            "http://wap.ksbus.com.cn/lineGps/531/upOrDown/0/station/-1/order/-1",
+            "http://wap.ksbus.com.cn/lineGps/31/upOrDown/1/station/-1/order/-1",
+            "http://wap.ksbus.com.cn/lineGps/33/upOrDown/1/station/-1/order/-1"
+    };
+
+    public static final String MIKE_SPEC_DESCS[] = {
+            "一路",
+            "24路",
+            "11路",
+            "15路"
+    };
 }
