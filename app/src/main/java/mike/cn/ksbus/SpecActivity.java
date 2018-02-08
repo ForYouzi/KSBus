@@ -60,18 +60,21 @@ public class SpecActivity extends AppCompatActivity {
                         for (int i = 0; i < Config.MIKE_SPEC_DESCS.length; i++) {
                             content += Config.MIKE_SPEC_DESCS[i] + "\n";
                             content += Spec.filter(HttpUtils.executeHttpGet(Config.MIKE_SPEC_URLS[i]));
+                            content += "\n";
                         }
                         break;
                     case Config.YOUZI_ON_SPEC:
                         for (int i = 0; i < Config.YOUZI_SPEC_ON_WORK_DESCS.length; i++) {
                             content += Config.YOUZI_SPEC_ON_WORK_DESCS[i] + "\n";
                             content += Spec.filter(HttpUtils.executeHttpGet(Config.YOUZI_SPEC_ON_WORK_URLS[i]));
+                            content += "\n";
                         }
                         break;
                     case Config.YOUZI_OFF_SPEC:
                         for (int i = 0; i < Config.YOUZI_SPEC_OFF_WORK_DESCS.length; i++) {
                             content += Config.YOUZI_SPEC_OFF_WORK_DESCS[i] + "\n";
                             content += Spec.filter(HttpUtils.executeHttpGet(Config.YOUZI_SPEC_OFF_WORK_URLS[i]));
+                            content += "\n";
                         }
                         break;
 
