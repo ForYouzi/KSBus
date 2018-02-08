@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -73,19 +74,30 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // 填充menu的main.xml文件; 给action bar添加条目
-        menu.add(0, 0, 0, "MIKE SPEC");
+        menu.add(0, Config.MIKE_SPEC, 0, "Mike 回家");
+        menu.add(0, Config.YOUZI_ON_SPEC, 0, "Youzi 上班");
+        menu.add(0, Config.YOUZI_OFF_SPEC, 0, "Youzi 下班");
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent = new Intent(getApplicationContext(), SpecActivity.class);
+        Log.i(this.getClass().getCanonicalName(), String.valueOf(item.getItemId()));
         switch (item.getItemId()) {
             case 0:
-                Intent intent = new Intent(getApplicationContext(), MikeSpecActivity.class);
+                Config.SPEC_TYPE = Config.MIKE_SPEC;
                 startActivity(intent);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+                break;
+            case 1:
+                Config.SPEC_TYPE = Config.YOUZI_ON_SPEC;
+                startActivity(intent);
+                break;
+            case 2:
+                Config.SPEC_TYPE = Config.YOUZI_OFF_SPEC;
+                startActivity(intent);
+                break;
         }
+        return super.onOptionsItemSelected(item);
     }
 }

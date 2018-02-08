@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
  * @e-mail mike@mikecoder.cn
  */
 
-public class MikeSpec {
+public class Spec {
 
     public static String filter(String content) {
         Pattern pattern = Pattern.compile("<div class=\"busTip.*?/stationGps/.*?\">(.*?)</a>");

@@ -13,7 +13,7 @@ import java.net.URL;
  * @e-mail mike@mikecoder.cn
  */
 
-public class HttpUtil {
+public class HttpUtils {
     public static String executeHttpGet(String url) {
         String            result     = "";
         URL               u          = null;

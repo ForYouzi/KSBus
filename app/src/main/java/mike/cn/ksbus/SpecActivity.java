@@ -8,10 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import mike.cn.ksbus.config.Config;
-import mike.cn.ksbus.network.MikeSpec;
-import mike.cn.ksbus.util.HttpUtil;
+import mike.cn.ksbus.network.Spec;
+import mike.cn.ksbus.util.HttpUtils;
 
-public class MikeSpecActivity extends AppCompatActivity {
+public class SpecActivity extends AppCompatActivity {
 
     private TextView textView;
 
@@ -39,11 +39,11 @@ public class MikeSpecActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mike_spec);
+        setContentView(R.layout.activity_spec);
 
         textView = (TextView) findViewById(R.id.textView);
 
-        progressDialog = new ProgressDialog(MikeSpecActivity.this);
+        progressDialog = new ProgressDialog(SpecActivity.this);
 
 
         Thread thread = new Thread(new Runnable() {
@@ -55,9 +55,26 @@ public class MikeSpecActivity extends AppCompatActivity {
 
                 String content = "";
 
-                for (int i = 0; i < Config.MIKE_SPEC_DESCS.length; i++) {
-                    content += Config.MIKE_SPEC_DESCS[i] + "\n";
-                    content += MikeSpec.filter(HttpUtil.executeHttpGet(Config.MIKE_SPEC_URLS[i]));
+                switch (Config.SPEC_TYPE) {
+                    case Config.MIKE_SPEC:
+                        for (int i = 0; i < Config.MIKE_SPEC_DESCS.length; i++) {
+                            content += Config.MIKE_SPEC_DESCS[i] + "\n";
+                            content += Spec.filter(HttpUtils.executeHttpGet(Config.MIKE_SPEC_URLS[i]));
+                        }
+                        break;
+                    case Config.YOUZI_ON_SPEC:
+                        for (int i = 0; i < Config.YOUZI_SPEC_ON_WORK_DESCS.length; i++) {
+                            content += Config.YOUZI_SPEC_ON_WORK_DESCS[i] + "\n";
+                            content += Spec.filter(HttpUtils.executeHttpGet(Config.YOUZI_SPEC_ON_WORK_URLS[i]));
+                        }
+                        break;
+                    case Config.YOUZI_OFF_SPEC:
+                        for (int i = 0; i < Config.YOUZI_SPEC_OFF_WORK_DESCS.length; i++) {
+                            content += Config.YOUZI_SPEC_OFF_WORK_DESCS[i] + "\n";
+                            content += Spec.filter(HttpUtils.executeHttpGet(Config.YOUZI_SPEC_OFF_WORK_URLS[i]));
+                        }
+                        break;
+
                 }
                 message = new Message();
                 message.what = END;
